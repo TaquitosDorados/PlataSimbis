@@ -18,6 +18,8 @@ public class InputManager : MonoBehaviour
     private InputActions inputActions;
     private Camera mainCamera;
 
+    public static Vector2 position;
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -38,6 +40,12 @@ public class InputManager : MonoBehaviour
         inputActions.Touch.Tap.started += ctx => StartTap(ctx);
         inputActions.Touch.Hold.performed += ctx => StartHold(ctx);
         inputActions.Touch.Hold.canceled += ctx => EndHold(ctx);
+        inputActions.Touch.Position.performed += ctx => UpdatePos(ctx);
+    }
+
+    void UpdatePos(InputAction.CallbackContext context)
+    {
+        position = Utility.ScreenToWorld(mainCamera, context.ReadValue<Vector2>());
     }
 
     void StartTouchPrimary(InputAction.CallbackContext context)
