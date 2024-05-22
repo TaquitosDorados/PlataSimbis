@@ -27,5 +27,14 @@ public class EjemploPaulo : MonoBehaviour
         Debug.Log("Comes Webos");
     }
 
+    public void Izquierdeas()
+    {
+        Debug.Log("Izquierdeas");
+    }
+
+    public void Srigth()
+    {
+        Debug.Log("Sright");
+    }
 
 }
